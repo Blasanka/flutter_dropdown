@@ -1,3 +1,7 @@
+## [0.0.4] - Custom widget support.
+
+* Custom widget support for dropdown menu items.
+
 ## [0.0.3] - Any type dropdown button implementation.
 
 * Create dropdown button for any data items.
@@ -6,6 +10,6 @@
 
 * Create dropdown button for string items easily.
 
-## [0.0.1] - Simple dropdown button for string values.
+## [0.0.1] - Simple dropdown button.
 
-* Create dropdown button for string items easily.
+* Less complex boilerplate code for dropdown button.

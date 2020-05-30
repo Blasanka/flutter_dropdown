@@ -9,6 +9,9 @@ enum DropDownType {
 class DropDown<T> extends StatefulWidget {
   final DropDownType dropDownType;
   final List<T> items;
+  /// If needs to render custom widgets for dropdown items must provide values for customWidgets
+  /// Also the customWidgets length have to be equals to items
+  final List<Widget> customWidgets;
   final T initialValue;
   final String hint;
   final Function onChange;
@@ -16,12 +19,13 @@ class DropDown<T> extends StatefulWidget {
   DropDown({
     this.dropDownType = DropDownType.Button,
     this.items,
+    this.customWidgets,
     this.initialValue,
     this.hint,
     this.onChange,
   }) : assert(dropDownType != null),
-      assert(items != null),
-      assert(onChange != null);
+      assert(items != null && !(items is Widget)),
+      assert((customWidgets != null) ? items.length == customWidgets.length : (customWidgets == null));
 
   @override
   _DropDownState createState() => _DropDownState();
@@ -61,7 +65,9 @@ class _DropDownState<T> extends State<DropDown<T>> {
 
   DropdownMenuItem<T> buildDropDownItem(T item) =>
       DropdownMenuItem<T>(
-        child: (item is Widget) ? item : Text(item.toString()),
+        child: (widget.customWidgets != null)
+            ? widget.customWidgets[widget.items.indexOf(item)]
+            : Text(item.toString()),
         value: item,
       );
 }
