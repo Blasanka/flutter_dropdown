@@ -6,15 +6,17 @@ enum DropDownType {
   Button,
 }
 
-class DropDown extends StatefulWidget {
+class DropDown<T> extends StatefulWidget {
   final DropDownType dropDownType;
-  final List<String> items;
+  final List<T> items;
+  final T initialValue;
   final String hint;
   final Function onChange;
 
   DropDown({
     this.dropDownType = DropDownType.Button,
     this.items,
+    this.initialValue,
     this.hint,
     this.onChange,
   }) : assert(dropDownType != null),
@@ -25,13 +27,13 @@ class DropDown extends StatefulWidget {
   _DropDownState createState() => _DropDownState();
 }
 
-class _DropDownState extends State<DropDown> {
+class _DropDownState<T> extends State<DropDown<T>> {
   
-  String selectedValue;
+  T selectedValue;
   
   @override
   void initState() {
-    selectedValue = widget.items.first;
+    selectedValue = widget.initialValue;
     super.initState();
   }
   
@@ -44,22 +46,22 @@ class _DropDownState extends State<DropDown> {
         return SizedBox();
       case DropDownType.Button:
       default:
-        return DropdownButton(
-          onChanged: (String value) {
+        return DropdownButton<T>(
+          onChanged: (T value) {
             selectedValue = value;
             setState(() {});
             widget.onChange(value);
           },
           value: selectedValue,
-          items: widget.items.map<DropdownMenuItem<String>>((item) => buildDropDownItem(item)).toList(),
+          items: widget.items.map<DropdownMenuItem<T>>((item) => buildDropDownItem(item)).toList(),
           hint: Text(widget.hint),
         );
     }
   }
 
-  DropdownMenuItem<String> buildDropDownItem(String item) =>
-      DropdownMenuItem<String>(
-        child: Text(item),
+  DropdownMenuItem<T> buildDropDownItem(T item) =>
+      DropdownMenuItem<T>(
+        child: (item is Widget) ? item : Text(item.toString()),
         value: item,
       );
 }

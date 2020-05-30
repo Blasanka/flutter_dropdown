@@ -99,9 +99,9 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
-            DropDown(
-              items: ["Male", "Female", "Other"],
-              hint: "Male",
+            DropDown<String>(
+              items: <String>["Male", "Female", "Other"],
+              hint: "Select gender",
               onChange: print,
             ),
           ],
