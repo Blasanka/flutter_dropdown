@@ -21,7 +21,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.2
-  dropdown:
+  flutter_dropdown:
     path: ../
 
 dev_dependencies:

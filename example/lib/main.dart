@@ -1,4 +1,4 @@
-import 'package:dropdown/dropdown.dart';
+import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());

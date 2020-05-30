@@ -1,8 +1,8 @@
-name: dropdown
+name: flutter_dropdown
 description: This does make Flutter Framework complicated dropdown button less complicated
 version: 0.0.1
-author:
-homepage:
+#author:
+homepage: https://github.com/Blasanka/flutter_dropdown
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
