@@ -1,5 +1,9 @@
 ## [0.0.4] - Custom widget support.
 
+* Property to make dropdown expanded (`isExpanded` `false` by default).
+
+## [0.0.4] - Custom widget support.
+
 * Custom widget support for dropdown menu items.
 
 ## [0.0.3] - Any type dropdown button implementation.
