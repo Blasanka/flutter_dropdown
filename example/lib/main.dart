@@ -4,21 +4,11 @@ import 'package:flutter_dropdown/flutter_dropdown.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -29,15 +19,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -46,14 +27,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  List<Person> persons = [
+    Person(gender: "Male", url: "https://images.unsplash.com/photo-1555952517-2e8e729e0b44"),
+    Person(gender: "Female", url: "https://images.unsplash.com/photo-1555952517-2e8e729e0b44"),
+    Person(gender: "Other", url: "https://images.unsplash.com/photo-1555952517-2e8e729e0b44"),
+  ];
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
@@ -65,51 +46,37 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            DropDown<String>(
-              items: <String>["Male", "Female", "Other"],
-              customWidgets: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Text("Male"),
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          "https://raw.githubusercontent.com/rrousselGit/provider/master/resources/expanded_devtools.jpg"),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Text("Female"),
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          "https://raw.githubusercontent.com/rrousselGit/provider/master/resources/expanded_devtools.jpg"),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Text("Other"),
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          "https://raw.githubusercontent.com/rrousselGit/provider/master/resources/expanded_devtools.jpg"),
-                    ),
-                  ],
-                )
-              ],
-              hint: "Select gender",
-              onChange: print,
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'You have pushed the button this many times:',
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.display1,
+              ),
+              Text("Simple dropdown widget with string"),
+              DropDown<String>(
+                items: <String>["Male", "Female", "Other"],
+                initialValue: "Female",
+                hint: Text("Select gender"),
+                onChange: print,
+              ),
+              SizedBox(height: 20),
+              Text("A dropdown with object and With custom widgets"),
+              DropDown<Person>(
+                items: persons,
+                initialValue: persons.first,
+                hint: buildDropDownRow(persons.first),
+                onChange: print,
+                customWidgets: persons.map((p) => buildDropDownRow(p)).toList(),
+                isExpanded: true,
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -119,4 +86,25 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  Row buildDropDownRow(Person person) {
+    return Row(
+      children: <Widget>[
+        Expanded(child: Text(person.gender)),
+        CircleAvatar(
+          backgroundImage: NetworkImage(person.url),
+        ),
+      ],
+    );
+  }
+
+
+}
+
+class Person {
+  final String gender;
+  final String name;
+  final String url;
+
+  Person({this.name, this.gender, this.url});
 }

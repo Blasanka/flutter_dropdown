@@ -13,8 +13,8 @@ class DropDown<T> extends StatefulWidget {
   /// Also the customWidgets length have to be equals to items
   final List<Widget> customWidgets;
   final T initialValue;
-  final String hint;
-  final Function onChange;
+  final Widget hint;
+  final ValueChanged<T> onChange;
   final bool isExpanded;
 
   DropDown({
@@ -54,13 +54,12 @@ class _DropDownState<T> extends State<DropDown<T>> {
         return DropdownButton<T>(
           isExpanded: widget.isExpanded,
           onChanged: (T value) {
-            selectedValue = value;
-            setState(() {});
+            setState(() => selectedValue = value);
             if (widget.onChange != null) widget.onChange(value);
           },
           value: selectedValue,
           items: widget.items.map<DropdownMenuItem<T>>((item) => buildDropDownItem(item)).toList(),
-          hint: Text(widget.hint),
+          hint: widget.hint,
         );
     }
   }

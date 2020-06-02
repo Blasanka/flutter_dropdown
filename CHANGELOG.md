@@ -1,4 +1,12 @@
-## [0.0.4] - Custom widget support.
+## [0.0.6] - Hint became a widget instead of String.
+
+* Hint changed to Widget instead of String (Let me know if need to revert).
+* Example app updated
+
+<em>Let me know if this dropdown less complicated with new features. So that, I can
+keep refactoring this to make it more less complicated.</em>
+
+## [0.0.5] - Expanded property.
 
 * Property to make dropdown expanded (`isExpanded` `false` by default).
 
