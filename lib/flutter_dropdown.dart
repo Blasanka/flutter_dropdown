@@ -14,7 +14,7 @@ class DropDown<T> extends StatefulWidget {
   final List<Widget> customWidgets;
   final T initialValue;
   final Widget hint;
-  final ValueChanged<T> onChange;
+  final Function(T) onChange;
   final bool isExpanded;
 
   DropDown({

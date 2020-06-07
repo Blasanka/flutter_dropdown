@@ -1,3 +1,7 @@
+## [0.0.6+hotfix.1] - `onChange()` `null` issue fixed
+
+* Fixed: `'Null' is not a subtype of type '(dynamic) => void`'`.
+
 ## [0.0.6] - Hint became a widget instead of String.
 
 * Hint changed to Widget instead of String (Let me know if need to revert).
