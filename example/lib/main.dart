@@ -33,10 +33,18 @@ class _MyHomePageState extends State<MyHomePage> {
     Person(gender: "Other", url: "https://images.unsplash.com/photo-1555952517-2e8e729e0b44"),
   ];
 
+  Person selectedPerson;
+
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
+  }
+
+  @override
+  void initState() {
+    selectedPerson = persons.first;
+    super.initState();
   }
 
   @override
@@ -63,18 +71,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 items: <String>["Male", "Female", "Other"],
                 initialValue: "Female",
                 hint: Text("Select gender"),
-                onChange: print,
+                onChanged: print,
               ),
               SizedBox(height: 20),
               Text("A dropdown with object and With custom widgets"),
               DropDown<Person>(
                 items: persons,
-                initialValue: persons.first,
+//                initialValue: selectedPerson,
                 hint: buildDropDownRow(persons.first),
-                onChange: print,
+                onChanged: (Person p) {
+                  print(p.gender);
+                  setState(() {
+                    selectedPerson = p;
+                  });
+                },
                 customWidgets: persons.map((p) => buildDropDownRow(p)).toList(),
                 isExpanded: true,
               ),
+              Text("Selected person's gender is: ${selectedPerson.gender}"),
             ],
           ),
         ),

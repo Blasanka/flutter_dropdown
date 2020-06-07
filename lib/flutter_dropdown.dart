@@ -14,7 +14,7 @@ class DropDown<T> extends StatefulWidget {
   final List<Widget> customWidgets;
   final T initialValue;
   final Widget hint;
-  final Function(T) onChange;
+  final Function onChanged;
   final bool isExpanded;
 
   DropDown({
@@ -23,7 +23,7 @@ class DropDown<T> extends StatefulWidget {
     this.customWidgets,
     this.initialValue,
     this.hint,
-    this.onChange,
+    this.onChanged,
     this.isExpanded = false,
   }) : assert(items != null && !(items is Widget)),
       assert((customWidgets != null) ? items.length == customWidgets.length : (customWidgets == null));
@@ -55,7 +55,7 @@ class _DropDownState<T> extends State<DropDown<T>> {
           isExpanded: widget.isExpanded,
           onChanged: (T value) {
             setState(() => selectedValue = value);
-            if (widget.onChange != null) widget.onChange(value);
+            if (widget.onChanged != null) widget.onChanged(value);
           },
           value: selectedValue,
           items: widget.items.map<DropdownMenuItem<T>>((item) => buildDropDownItem(item)).toList(),

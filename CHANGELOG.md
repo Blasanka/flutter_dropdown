@@ -1,4 +1,4 @@
-## [0.0.6+hotfix.1] - `onChange()` `null` issue fixed
+## [0.0.6+hotfix.2] - `onChange()` `null` issue fixed
 
 * Fixed: `'Null' is not a subtype of type '(dynamic) => void`'`.
 
