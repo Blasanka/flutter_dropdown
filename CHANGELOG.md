@@ -1,3 +1,7 @@
+## [0.0.7+hotfix.1] - Cannot select (disabled)
+
+* - Cannot select (disabled) drop down button after cleared fixed.
+
 ## [0.0.7] - `isCleared` parameter to clear dropdown selected value
 
 * Sometimes we need to clear drop down selected value and show hint or disable drop down.

@@ -61,9 +61,7 @@ class _DropDownState<T> extends State<DropDown<T>> {
             if (widget.onChanged != null) widget.onChanged(value);
           },
           value: widget.isCleared ? null : selectedValue,
-          items: widget.isCleared
-              ? null
-              : widget.items.map<DropdownMenuItem<T>>((item) => buildDropDownItem(item)).toList(),
+          items: widget.items.map<DropdownMenuItem<T>>((item) => buildDropDownItem(item)).toList(),
           hint: widget.hint,
         );
     }
