@@ -38,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     setState(() {
       _counter++;
+      selectedPerson = null;
     });
   }
 
@@ -78,17 +79,19 @@ class _MyHomePageState extends State<MyHomePage> {
               DropDown<Person>(
                 items: persons,
 //                initialValue: selectedPerson,
-                hint: buildDropDownRow(persons.first),
+                hint: Text("Select"),
+                initialValue: persons.first,
                 onChanged: (Person p) {
-                  print(p.gender);
+                  print(p?.gender);
                   setState(() {
                     selectedPerson = p;
                   });
                 },
+                isCleared: selectedPerson == null,
                 customWidgets: persons.map((p) => buildDropDownRow(p)).toList(),
                 isExpanded: true,
               ),
-              Text("Selected person's gender is: ${selectedPerson.gender}"),
+              Text("Selected person's gender is: ${selectedPerson?.gender ?? "None"}"),
             ],
           ),
         ),
@@ -104,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Row buildDropDownRow(Person person) {
     return Row(
       children: <Widget>[
-        Expanded(child: Text(person.gender)),
+        Expanded(child: Text(person?.gender ?? "Select")),
         CircleAvatar(
           backgroundImage: NetworkImage(person.url),
         ),

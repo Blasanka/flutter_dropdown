@@ -1,3 +1,9 @@
+## [0.0.7] - `isCleared` parameter to clear dropdown selected value
+
+* Sometimes we need to clear drop down selected value and show hint or disable drop down.
+  If that required, pass `isCreated: true`. This parameter default to `false`. If this not
+  parameter not required, can ignore it.
+
 ## [0.0.6+hotfix.2] - `onChange()` `null` issue fixed
 
 * Fixed: `'Null' is not a subtype of type '(dynamic) => void`'`.

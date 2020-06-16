@@ -16,6 +16,8 @@ class DropDown<T> extends StatefulWidget {
   final Widget hint;
   final Function onChanged;
   final bool isExpanded;
+  /// If need to clear dropdown currently selected value
+  final bool isCleared;
 
   DropDown({
     this.dropDownType = DropDownType.Button,
@@ -25,6 +27,7 @@ class DropDown<T> extends StatefulWidget {
     this.hint,
     this.onChanged,
     this.isExpanded = false,
+    this.isCleared = false,
   }) : assert(items != null && !(items is Widget)),
       assert((customWidgets != null) ? items.length == customWidgets.length : (customWidgets == null));
 
@@ -57,8 +60,10 @@ class _DropDownState<T> extends State<DropDown<T>> {
             setState(() => selectedValue = value);
             if (widget.onChanged != null) widget.onChanged(value);
           },
-          value: selectedValue,
-          items: widget.items.map<DropdownMenuItem<T>>((item) => buildDropDownItem(item)).toList(),
+          value: widget.isCleared ? null : selectedValue,
+          items: widget.isCleared
+              ? null
+              : widget.items.map<DropdownMenuItem<T>>((item) => buildDropDownItem(item)).toList(),
           hint: widget.hint,
         );
     }
