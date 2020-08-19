@@ -1,6 +1,12 @@
+## [0.0.8] - Underline feature to dropdown
+
+* You can use `showUnderline` boolean to decide if the underline isshown or not.
+
+  This feature added by contributor [Pedro Lemos](https://github.com/pedrolemoz).
+
 ## [0.0.7+hotfix.1] - Cannot select (disabled)
 
-* - Cannot select (disabled) drop down button after cleared fixed.
+* Cannot select (disabled) drop down button after cleared fixed.
 
 ## [0.0.7] - `isCleared` parameter to clear dropdown selected value
 
