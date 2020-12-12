@@ -7,7 +7,7 @@ Simple widget:
 ```
 DropDown(
   items: ["Male", "Female", "Other"],
-  hint: "Male",
+  hint: Text("Male"),
   onChanged: print,
 ),
 ```
@@ -46,7 +46,7 @@ DropDown<String>(
       ],
     )
   ],
-  hint: "Select gender",
+    hint: Text("Select Gender"),
   onChanged: print,
 ),
 ```
