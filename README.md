@@ -7,8 +7,12 @@ Simple widget:
 ```
 DropDown(
   items: ["Male", "Female", "Other"],
-  hint: "Male",
-  onChange: print,
+  hint: Text("Male"),
+  icon: Icon(
+      Icons.expand_more,
+      color: Colors.blue,
+  ),
+  onChanged: print,
 ),
 ```
 
@@ -17,6 +21,10 @@ With custom dropdown item widget:
 ```
 DropDown<String>(
   items: <String>["Male", "Female", "Other"],
+  icon: Icon(
+      Icons.expand_more,
+      color: Colors.blue,
+  ),
   customWidgets: <Widget>[
     Row(
       children: <Widget>[
@@ -46,7 +54,7 @@ DropDown<String>(
       ],
     )
   ],
-  hint: "Select gender",
-  onChange: print,
+    hint: Text("Select Gender"),
+  onChanged: print,
 ),
 ```
