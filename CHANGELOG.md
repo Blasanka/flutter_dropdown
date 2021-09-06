@@ -1,3 +1,9 @@
+## [1.0.0+hotfix.1] - Bug fix icon nullability with default icon
+
+* Optional icon nullability with default icon.
+
+  This bug fixed added by contributor [Rashid-Khabeer](https://github.com/Rashid-Khabeer).
+
 ## [1.0.0] - Null safety and Optional icon
 
 * flutter_dropdown (this package) is completely migrated to null safety by Lucas Lannes.
