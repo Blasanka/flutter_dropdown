@@ -1,3 +1,13 @@
+## [1.0.0] - Null safety and Optional icon
+
+* flutter_dropdown (this package) is completely migrated to null safety by Lucas Lannes.
+
+  This feature added by contributor [Lucas Lannes](https://github.com/lucaslannes).
+
+* You can use `icon` Widget to add optional icon to the dropdown.
+
+  This feature added by contributor [Abubakar Abdusalam](https://github.com/bynalab).
+
 ## [0.0.8] - Underline feature to dropdown
 
 * You can use `showUnderline` boolean to decide if the underline isshown or not.
