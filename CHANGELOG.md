@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.1] - Additional option to increase the item height
+## [1.0.1+hotfix.1] - Additional option to increase the item height
 
 * Optional increaseItemHeight. You can increase the height by this property. This will sum up with kMinInteractiveDimension.
 

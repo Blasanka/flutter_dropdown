@@ -25,6 +25,9 @@ class DropDown<T> extends StatefulWidget {
   /// You can choose between show an underline at bottom or not
   final bool showUnderline;
 
+  // Increase item height from default value
+  final double increaseItemHeight;
+
   DropDown({
     this.dropDownType = DropDownType.Button,
     required this.items,
@@ -36,6 +39,7 @@ class DropDown<T> extends StatefulWidget {
     this.icon,
     this.isCleared = false,
     this.showUnderline = true,
+    this.increaseItemHeight = 0,
   })  : assert(!(items is Widget)),
         assert((customWidgets != null)
             ? items.length == customWidgets.length
@@ -78,7 +82,7 @@ class _DropDownState<T> extends State<DropDown<T>> {
               .map<DropdownMenuItem<T>>((item) => buildDropDownItem(item))
               .toList(),
           hint: widget.hint,
-          itemHeight: kMinInteractiveDimension + increaseItemHeight,
+          itemHeight: kMinInteractiveDimension + widget.increaseItemHeight,
           icon: widget.icon ?? Icon(
             Icons.expand_more,
           ),
