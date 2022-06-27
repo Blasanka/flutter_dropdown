@@ -1,3 +1,9 @@
+# Changelog
+
+## [1.0.1] - Additional option to increase the item height
+
+* Optional increaseItemHeight. You can increase the height by this property. This will sum up with kMinInteractiveDimension.
+
 ## [1.0.0+hotfix.1] - Bug fix icon nullability with default icon
 
 * Optional icon nullability with default icon.

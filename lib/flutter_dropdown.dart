@@ -78,6 +78,7 @@ class _DropDownState<T> extends State<DropDown<T>> {
               .map<DropdownMenuItem<T>>((item) => buildDropDownItem(item))
               .toList(),
           hint: widget.hint,
+          itemHeight: kMinInteractiveDimension + increaseItemHeight,
           icon: widget.icon ?? Icon(
             Icons.expand_more,
           ),
