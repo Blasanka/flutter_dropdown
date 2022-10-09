@@ -28,6 +28,9 @@ class DropDown<T> extends StatefulWidget {
   // Increase item height from default value
   final double increaseItemHeight;
 
+  // Background color for dropdown view
+  final Color? backgroundColor;
+
   DropDown({
     this.dropDownType = DropDownType.Button,
     required this.items,
@@ -40,6 +43,7 @@ class DropDown<T> extends StatefulWidget {
     this.isCleared = false,
     this.showUnderline = true,
     this.increaseItemHeight = 0,
+    this.backgroundColor,
   })  : assert(!(items is Widget)),
         assert((customWidgets != null)
             ? items.length == customWidgets.length
@@ -72,6 +76,7 @@ class _DropDownState<T> extends State<DropDown<T>> {
       // case DropDownType.Button: // Empty statement
       default:
         dropdown = DropdownButton<T>(
+          dropdownColor: widget.backgroundColor,
           isExpanded: widget.isExpanded,
           onChanged: (T? value) {
             setState(() => selectedValue = value);
@@ -83,9 +88,10 @@ class _DropDownState<T> extends State<DropDown<T>> {
               .toList(),
           hint: widget.hint,
           itemHeight: kMinInteractiveDimension + widget.increaseItemHeight,
-          icon: widget.icon ?? Icon(
-            Icons.expand_more,
-          ),
+          icon: widget.icon ??
+              Icon(
+                Icons.expand_more,
+              ),
         );
     }
 
